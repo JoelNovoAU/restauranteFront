@@ -1,0 +1,36 @@
+body{
+    background-color: black  !important;
+    font-family: "Roboto Condensed", serif !important;
+    font-optical-sizing: auto !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
+}
+.nav-link.active{
+text-decoration: underline black;
+}
+.opciones{
+    display: grid;
+    margin-top: 2%;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+}
+.opcion{
+    color: white;
+    background-color: rgb(80, 80, 80);
+    width: 55%;
+    margin: 2%;
+    text-decoration: none;
+    text-align: center;
+    border-radius: 15px;
+    border: solid rgb(255, 196, 0);
+}
+.opcion:hover{
+border: solid gray;
+}
+.icono{
+    width: 40%;
+}
+/*CREAR MESA*/
+.contenedorcreacion{
+    
+}
