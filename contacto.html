@@ -10,8 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap" rel="stylesheet">
 </head>
-<body class="concesionario">
-    <header>
+<body class="concesionario">    <header>
         <nav class="navbar navbar-expand-md navbar-dark bg">
             <div class="container-fluid d-flex">
                 <a class="navbar-brand me-auto" href="login.html">
@@ -54,8 +53,39 @@
         </nav>
         
 </header>
-<img id="img1" src="img/Section 10.png" alt="">
-<img id="img2" src="img/Section 1.png" alt="">
+<div class="contenedorcontacto">
+    <div class="izqcontacto">
+        <h1 class="tit" id="texto">
+            CONTACTA CON EL EQUIPO
+        </h1>
+        <h2 class="titulo" id="titulo">BEN COMER</h2>
+        <p id="texto" class="pcontacto">Nuestro equipo de soporte técnico se pondrá en contacto con usted via correo electrónico en un plazo de 24-48/dias laborales/ máximo.</p>
+    </div>
+    <div class="dercontacto">
+        <form class="formcontacto">
+            <div class="form-group">
+              <label for="exampleFormControlInput1" id="labelf">Correo de contacto:</label>
+              <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="ejemplo@extension.ej">
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlSelect1"id="labelf">Tema de contacto</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                <option>TICKET</option>
+                <option>ENCARGO</option>
+                <option>PEDIDO ONLINE</option>
+                <option>SOLICITUD-RRHH</option>
+                <option>OTRO +</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1"id="labelf">Consulta:</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Declare su ticket aquí."></textarea>
+            </div>
+            <button type="submit" class="enviar">ENVIAR</button>
+    
+          </form>
+    </div>
+</div>
 <footer>
 <img id="logofooter" src="img/logo2.png" alt="">
 <h2>TE ESPERAMOS CON LA AUTÉNTICA HAMBURGUESA DE MERCADO</h2>

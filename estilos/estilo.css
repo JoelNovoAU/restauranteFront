@@ -1,3 +1,16 @@
+/*Etiquetas generales ---*/
+#titulo{
+    font-family: "Sigmar", serif;
+    font-weight: 400;
+    font-style: normal;  
+    text-shadow: 3px 3px 3px rgb(255, 136, 0);
+}
+#texto{
+  font-family: "Roboto Condensed", serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+}
 body, html {
     margin: 0;
     padding: 0;
@@ -6,6 +19,12 @@ body, html {
     overflow-x: hidden;  
     display: flex;
     flex-direction: column;
+    /*fuente por defecto texto*/
+    background-color: black  !important;
+    font-family: "Roboto Condensed", serif !important;
+    font-optical-sizing: auto !important;
+    font-weight: 700 !important;
+    font-style: normal !important;
   } 
   /*header----------------------*/
   header {
@@ -150,4 +169,12 @@ width: 60%;
 #boton:hover{
   background-color: rgba(255, 0, 0, 0.501);
 transition:400ms;
+}
+/*CONTACTO SUB PAG*****************/
+.contenedorcontacto{
+  margin-top: 200px;
+  margin-bottom: 200px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  color: white;
 }
