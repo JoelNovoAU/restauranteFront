@@ -172,9 +172,44 @@ transition:400ms;
 }
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
+  width: 100%;
   margin-top: 200px;
   margin-bottom: 200px;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   color: white;
+
+  padding: 5%;
+}
+.izqcontacto{
+  width: 70%;
+}
+.formcontacto{
+  padding: 3%;
+  width: 70%;
+  background-color: rgb(61, 61, 61);
+  border-radius: 10px;
+}
+.logoform{
+  width: 50%;
+  margin-left: 25%;
+}
+.enviar{
+  background-color: rgb(255, 136, 0);
+  color: white ;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
+  border-radius: 5px;
+  padding: 2%;
+}
+.enviar:hover{
+  background-color: rgb(255, 159, 48);
+  transition: 0.2s;
+}
+.tit{
+  text-align: center !important;
+}
+.pcontacto{
+  text-align: center;
 }
