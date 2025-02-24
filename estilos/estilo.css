@@ -141,6 +141,10 @@ h2{
   align-items: center;
   padding: 100px;
   gap: 40px;
+  font-family: "Roboto Condensed", serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
 }
 #arriba1{
   margin-top: 90px;
@@ -178,15 +182,19 @@ transition:400ms;
   display: grid;
   grid-template-columns: repeat(2,1fr);
   color: white;
-
   padding: 5%;
+}
+.dercontacto{
+  width: 70%;
 }
 .izqcontacto{
   width: 70%;
+  padding: 3%;
 }
 .formcontacto{
   padding: 3%;
-  width: 70%;
+  margin-top: 1%;
+  width: 100%;
   background-color: rgb(61, 61, 61);
   border-radius: 10px;
 }
@@ -212,4 +220,57 @@ transition:400ms;
 }
 .pcontacto{
   text-align: center;
+}
+/*RESERVA SUB PAG *****************/
+.divreserva{
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 100px;
+  height: 100%;
+  gap: 40px;
+  font-family: "Roboto Condensed", serif !important;
+  font-optical-sizing: auto !important;
+  font-weight: 700 !important;
+  font-style: normal !important;
+  background-image: url("../img/hamburguesas.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.divreserva::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#divreserva1{
+  margin-top: 90px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.contenedorreserva{
+
+}
+.contenedorventajas{
+color: white !important;
+border-top: solid red;
+display: flex;
+background: rgb(0,0,0);
+padding: 5%;
+padding-bottom: 10%;
+}
+.ventaja{
+  text-align: center;
+  width: 100%;
+
+}
+.icoventaja{
+  width: 80px;
+  margin-bottom: 20%;
 }
