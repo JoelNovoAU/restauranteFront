@@ -177,6 +177,75 @@ transition:400ms;
 }
 #imgpedido{
 }
+
+
+/*formPedido*/
+#menus {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10%;
+}
+
+.card12 {
+  display: flex;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  max-height: 250px;
+  align-items: center;
+  justify-content: flex-start; /* Alinea a la izquierda */
+}
+
+#izqImg {
+  width: 20%; /* Asegura que la imagen no ocupe más del 40% */
+}
+
+.card12 img {
+  width: 20%; /* Imagen ajustada al contenedor */
+  height: auto;
+  object-fit: cover;
+}
+
+.card12-content {
+  padding: 10px;
+  flex-grow: 1; /* Esto asegura que el contenido ocupe el espacio restante */
+}
+
+.card12-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card12-description {
+  font-size: 13px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.card12-price {
+  font-size: 18px;
+  font-weight: bolder;
+  color: black;
+}
+
+.add-button {
+  background: red;
+  color: white;
+  font-size: 20px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+
+
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
   width: 100%;
