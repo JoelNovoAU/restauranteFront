@@ -155,7 +155,8 @@ h2{
   align-items: center;
 }
 #texto1{
-  color: white !important;
+ color:  rgb(255, 136, 0) !important;
+ font-size: 40px;
 }
 #texto2{
   text-align: center;
@@ -173,6 +174,8 @@ width: 60%;
 #boton:hover{
   background-color: rgba(255, 0, 0, 0.501);
 transition:400ms;
+}
+#imgpedido{
 }
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
