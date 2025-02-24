@@ -56,7 +56,47 @@
         
 </header>
 
+<div class="container mt-5 bg-dark">
+    <div class="card shadow-lg p-4 bg-dark">
+        <div class="row align-items-center">
+            
+            <div class="col-md-4 text-center">
+                <img src="img/logo2.png" alt="Logo del Restaurante" class="img-fluid" style="max-width: 350px;">
+            </div>
 
+            <div class="col-md-8">
+                <h2 class="mb-4 text-left">Reserva tu Mesa</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre de la Reserva :</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Ingresa tu nombre" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="telefono" class="form-label">Número de Teléfono :</label>
+                        <input type="tel" class="form-control" id="telefono" placeholder="Ej: 123-456-7890" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Hora de la reserva :</label>
+                        <label for="fecha" class="form-label">Máximo 4 meses de antelación</label>
+                        <input type="date" class="form-control" id="fecha" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="hora" class="form-label">Hora de la Reserva :</label>
+                        <input type="time" class="form-control" id="hora" required>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-danger">Reservar Mesa :</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
 <footer>
     <img id="logofooter" src="img/logo2.png" alt="">
     <h2>TE ESPERAMOS CON LA AUTÉNTICA HAMBURGUESA DE MERCADO</h2>
