@@ -196,7 +196,7 @@ transition:400ms;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   max-width: 400px;
-  max-height: 250px;
+  height: 160px;
   align-items: center;
   justify-content: flex-start;
 }
@@ -246,10 +246,43 @@ transition:400ms;
   align-items: center;
   margin-left: auto;
   cursor: pointer;
+  border: none;
 }
 
+#cesta{
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0; /* Mueve el elemento a la parte inferior */
+  left: 0;
+  width: 99%;
+  z-index: 1000; /* Asegura que se mantenga encima de otros elementos */
+  margin: 0;
+padding: 10px;
+align-items: center;
+color: white;
+}
 
+#textocesta{
+  color: white;
+  font-weight: bold;
+}
 
+#botonPedido{
+  padding: 15px;
+  border-radius: 40px;
+  background-color: red;
+  text-decoration: none;
+  color: white;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#botonPedido:hover{
+  background-color: rgba(255, 0, 0, 0.501);
+  transition:400ms;
+}
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
   width: 100%;
@@ -347,4 +380,257 @@ padding-bottom: 10%;
 .icoventaja{
   width: 80px;
   margin-bottom: 20%;
+}
+
+
+/*formulario pagar----------*/
+
+.container5{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+#dividir2{
+  display: flex;
+  gap: 10px;
+}
+/* Estilos de la sección de datos personales */
+.personal-info, .pickup-details, .order-summary {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: auto;
+}
+
+.personal-info{
+width: 70%;
+}
+
+.order-summary{
+  width: 30%;
+  margin-top:80px;
+}
+
+.personal-info h3, .pickup-details h3, .order-summary h3 {
+  margin-bottom: 15px;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+gap: 100px;
+}
+
+.input-box {
+  width: 48%;
+}
+
+.input-box label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input-box input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Estilos de la sección de recogida */
+.pickup-details {
+  background-color: rgb(219, 56, 56);
+  color: white;
+  width: 845px;
+  margin-right: 526px;
+
+}
+
+.pickup-info, .time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.change-button {
+  background: none;
+  border: 1px solid white;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.change-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/* Estilos del resumen del pedido */
+.order-summary {
+height: 100%;
+}
+
+.order-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.order-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+}
+
+.item-details {
+  flex-grow: 1;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quantity button {
+  border: none;
+  background: #ddd;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.quantity button:hover {
+  background: #bbb;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.edit-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.payment-container {
+  background-color: white;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 55%;
+margin-right: 420px;
+}
+
+h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.card-input {
+  display: flex;
+  align-items: center;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.card-icon {
+  width: 30px;
+  margin-right: 10px;
+}
+
+.card-number {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+.input-box{
+ margin-right: 10px;
+}
+.check-icon {
+  color: green;
+  font-weight: bold;
+}
+
+.input-row {
+  display: flex;
+  gap: 10px;
+}
+
+.expiry {
+  display: flex;
+  align-items: center;
+}
+
+.expiry input {
+  width: 45px;
+  text-align: center;
+}
+
+.secure-payment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  margin-top: 10px;
+  color: #555;
+}
+
+.secure-payment img {
+  width: 20px;
+}
+
+.pay-button {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.pay-button:hover {
+  background-color: #218838;
 }

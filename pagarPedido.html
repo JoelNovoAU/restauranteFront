@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedido</title>
+    <link rel="stylesheet" href="estilos/estilo.css">
+</head>
+
+<body>
+    
+    <div class="container5">
+        <div id="dividir2">
+            <!-- Sección de datos personales -->
+            <div class="personal-info">
+                <h3>Completa tus datos personales:</h3>
+                <div class="form-group">
+                    <div class="input-box">
+                        <label>Nombre</label>
+                        <input type="text" >
+                    </div>
+                    <div class="input-box">
+                        <label>Apellidos</label>
+                        <input type="text" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-box">
+                        <label>Correo electrónico</label>
+                        <input type="email" >
+                    </div>
+                    <div class="input-box">
+                        <label>Teléfono</label>
+                        <input type="text" placeholder="+34">
+                    </div>
+                </div>
+            </div>
+            <div class="order-summary">
+                <h3>TU PEDIDO:</h3>
+                <div class="order-item">
+                    <img src="img/menu2.jpg" alt="Crispy Chicken Wings">
+                    <div class="item-details">
+                        <strong>CRISPY CHICKEN WINGS</strong>
+                        <p>Envases de plástico no reutilizables (Ley 7/2022), Cuenco Barbacoa Goiko</p>
+                        <div class="quantity">
+                            <button>-</button>
+                            <span>1</span>
+                            <button>+</button>
+                        </div>
+                    </div>
+                    <p class="price">11,92€</p>
+                    <button class="edit-button">✏️</button>
+                </div>
+                <hr>
+                <div class="total">
+                    <strong>TOTAL</strong>
+                    <span>11,92€</span>
+                </div>
+            </div>
+        </div>
+
+    <!-- Sección de detalles de recogida
+    <div class="pickup-details">
+        <h3>Detalles de tu recogida:</h3>
+        <div class="pickup-info">
+            <div class="location">
+                <span class="icon">📍</span>
+                <p><strong>Para recoger en:</strong><br>Rúa Rosalía de Castro, 9. 36201 Vigo</p>
+            </div>
+            <button class="change-button">Cambiar</button>
+        </div>
+        <div class="time">
+            <span class="icon">⏳</span>
+            <p><strong>Lo antes posible:</strong><br>25/02 a las 18:27</p>
+            <button class="change-button">Cambiar</button>
+        </div>
+    </div>
+ -->
+
+
+    <div class="payment-container">
+        <h2>Introduce los datos de tu tarjeta de pago</h2>
+
+        <form>
+            <div class="input-group">
+                <label>Titular de la tarjeta</label>
+                <input type="text" placeholder="Nombre en la tarjeta">
+            </div>
+
+            <div class="input-group">
+                <label>Número de la tarjeta</label>
+                <div class="card-input">
+                    <img src="img/tarjeta-icono.png" alt="Tarjeta" class="card-icon">
+                    <input type="text" placeholder="Introduce tu tarjeta..." class="card-number">
+                    <span class="check-icon">✔</span>
+                </div>
+            </div>
+
+            <div class="input-row">
+                <div class="input-group">
+                    <label>Fecha de caducidad</label>
+                    <div class="expiry">
+                        <input type="text" placeholder="MM" maxlength="2">
+                        <span>/</span>
+                        <input type="text" placeholder="AA" maxlength="2">
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label>CVV</label>
+                    <input type="text" placeholder="CVV" maxlength="4">
+                </div>
+            </div>
+
+            <div class="secure-payment">
+                <img src="img/seguro-icono.png" alt="Seguro">
+                <p><strong>Pago 100% seguro</strong><br>Utilizamos Paycomet para procesar nuestros pagos y garantizar
+                    que es un proceso 100% seguro.</p>
+            </div>
+
+            <button type="submit" class="pay-button">Pagar ahora</button>
+        </form>
+    </div>
+</div>
+
+</body>
+
+</html>
