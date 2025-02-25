@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&family=Sigmar&display=swap" rel="stylesheet">
 
 </head>
-<body id="texto">
+<body class="fondorestaurante">
     <header>
         <nav class="navbar navbar-expand-md navbar-dark bg">
             <div class="container-fluid d-flex">
@@ -55,46 +55,45 @@
         </nav>
         
     </header>
-<h1 class="titsolicitud">ESTAS SON TUS SOLICITUDES :</h1>
-<div class="solicitud">
-    <div class="contenedorsolicitud">
-        <div class="datos">
-            <h3>Miguel López Eskere</h3>
-            <h3>666 666 666</h3>
+<h1 class="titsolicitud"> </h1>
+<div class="contenedorsolicitudes">
+    <div class="card pendiente" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">NOMBRE NOMBRE NOMBRE</h5>
+          <h6 class="card-subtitle mb-2 text-muted">623 623 623</h6>
+          <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
+          <p class="card-text">27/04 - 21:30</p>
+          <div class="opciones">
+            <button type="submit" class="btn btn-danger" id="cancelar">CANCELAR</button>
+            <button type="submit" class="btn btn-primary" id="modificar">MODIFICAR</button>
+          </div>
         </div>
-        <div class="fecha">
-            <h3>DIA 28/03</h3>
-            <h3>HORA : 22:00</h3>
+      </div>
+      <div class="card aceptada" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">NOMBRE NOMBRE NOMBRE</h5>
+          <h6 class="card-subtitle mb-2 text-muted">623 623 623</h6>
+          <h6 class="card-subtitle mb-2 text-muted">ACEPTADA</h6>
+          <p class="card-text">27/04 - 21:30</p>
+          <div class="opciones">
+            <button type="submit" class="btn btn-danger" id="cancelar">CANCELAR</button>
+            <button type="submit" class="btn btn-primary" id="modificar">MODIFICAR</button>
+          </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-danger" id="cancelar">CANCELAR SOLICITUD</button>
+      </div>
+      <div class="card denegada" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">NOMBRE NOMBRE NOMBRE</h5>
+          <h6 class="card-subtitle mb-2 text-muted">623 623 623</h6>
+          <h6 class="card-subtitle mb-2 text-muted">DENEGADA</h6>
+          <p class="card-text">27/04 - 21:30</p>
+          <div class="opciones">
+            <button type="submit" class="btn btn-primary" id="nueva">SOLICITAR NUEVA</button>
+          </div>
+        </div>
+      </div>
 </div>
-<div class="solicitud">
-    <div class="contenedorsolicitud">
-        <div class="datos">
-            <h3>Miguel López Eskere</h3>
-            <h3>666 666 666</h3>
-        </div>
-        <div class="fecha">
-            <h3>DIA 21/03</h3>
-            <h3>HORA : 13:00</h3>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-danger" id="cancelar">CANCELAR SOLICITUD</button>
-</div>
-<div class="solicitud">
-    <div class="contenedorsolicitud">
-        <div class="datos">
-            <h3>Miguel López Eskere</h3>
-            <h3>666 666 666</h3>
-        </div>
-        <div class="fecha">
-            <h3>DIA 28/03</h3>
-            <h3>HORA : 22:00</h3>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-danger" id="cancelar">CANCELAR SOLICITUD</button>
-</div>
+
 <footer>
     <img id="logofooter" src="img/logo2.png" alt="">
     <h2>TE ESPERAMOS CON LA AUTÉNTICA HAMBURGUESA DE MERCADO</h2>

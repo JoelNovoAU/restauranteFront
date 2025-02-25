@@ -26,6 +26,9 @@ body, html {
     font-weight: 700 !important;
     font-style: normal !important;
   } 
+  .fondorestaurante{
+    background-image: url("../img/restaurante.jpg");
+  }
   /*header----------------------*/
   header {
     position: fixed;
@@ -35,6 +38,7 @@ body, html {
     z-index: 1000;
     display: flex;
     margin: 0;
+    background-color: rgba(17, 17, 17, 0.274);
   }
   .navbar-nav{
     display: flex;
@@ -161,8 +165,10 @@ margin-top: 5%;
 /*form reserva*/
 .container.mt-5.bg-dark{
   margin-top: 230px !important;
-  margin-bottom: 100px !important;
+  margin-bottom: 50px !important;
   border-radius: 20px;
+}
+.card.shadow-lg.p-4.bg-dark{
 }
 .interrogante{
   text-align: center;
@@ -180,35 +186,63 @@ form{
   margin-left: 25%;
   width: 50%;
   color: white !important;
+
 }
 /*SOLICITUD DE RESERVA*/
 .titsolicitud{
   color: white;
   margin-top:200px;
   margin-bottom:50px;
-
+  background-color: rgb(97, 0, 0);
+  width: 28%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
 .solicitud{
   background-color: rgb(61, 61, 61);
   text-align: center;
-  width: 50%;
-  margin-left: 25%;
+  width: 25%;
+  margin-left: 40%;
   border-radius: 10px;
   margin-bottom:50px;
 
 }
-.contenedorsolicitud{
+.contenedorsolicitudes{
   color: white;
-  display: grid;
-  border-radius: 10px;
+  display: flex;
   margin-top: 20px;
-  grid-template-columns: repeat(2,1fr);
+  margin-left: 25%;
+  margin-bottom: 300px;
 }
 .fecha{
+width: 50%;
+margin-left: 25% ;
+border-radius: 15px;
+padding: 2%;
+background-color: rgb(91, 91, 91);
 }
 .datos{
-text-shadow: 5px 5px 5px rgb(0, 0, 0);
+width: 50%;
+margin-left: 25% ;
+border-radius: 15px;
+padding: 2%;
+background-color: rgb(91, 91, 91);
 }
 #cancelar{
-margin-bottom: 20px;
+}
+.opciones{
+  text-align: center;
+}
+/*estados*/
+.card{
+  margin-left: 2%;
+}
+.pendiente{
+background-color: rgb(224, 224, 224) !important;
+}
+.aceptada{
+background-color: rgb(224, 255, 178) !important;
+}
+.denegada{
+background-color: rgb(255, 190, 174) !important;
 }
