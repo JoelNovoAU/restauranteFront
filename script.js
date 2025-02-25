@@ -13,8 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Las contraseñas no coinciden.");
             return;
         }
-
-        fetch("https://restaurante-back-1kfb.vercel.app/api/register", {
+        fetch(" https://restaurante-back2-two.vercel.app/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
