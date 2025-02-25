@@ -161,12 +161,23 @@ margin-top: 5%;
 /*form reserva*/
 .container.mt-5.bg-dark{
   margin-top: 230px !important;
-  margin-bottom: 200px !important;
+  margin-bottom: 100px !important;
   border-radius: 20px;
+}
+.interrogante{
+  text-align: center;
+  color: white;
+  background-color: rgb(151, 0, 0);
+  margin-bottom: 50px;
+}
+.enlacereserva{
+  color: white;
+
+}
+.enlacereserva:hover{
 }
 form{
   margin-left: 25%;
   width: 50%;
   color: white !important;
-
 }
