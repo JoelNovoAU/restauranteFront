@@ -8,7 +8,7 @@
 #texto{
   font-family: "Roboto Condensed", serif !important;
   font-optical-sizing: auto !important;
-  font-weight: 700 !important;
+  font-weight: 700 ;
   font-style: normal !important;
 }
 body, html {
@@ -387,7 +387,7 @@ padding-bottom: 10%;
 
 .container5{
 
-  display: grid;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
