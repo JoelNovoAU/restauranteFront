@@ -69,6 +69,9 @@ height: 100px;
   height: 100%;
   transform: scale(1.1);
 }
+#carouselExampleSlidesOnly{
+  height: 100%;
+}
 #rese{
     background-color: brown;
     }
@@ -175,18 +178,19 @@ width: 60%;
   background-color: rgba(255, 0, 0, 0.501);
 transition:400ms;
 }
-#imgpedido{
-}
-
 
 /*formPedido*/
 #menus {
   display: flex;
-  justify-content: space-around;
-  margin-top: 10%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  background-image: url("../img/fondoMenu.jpg");
+  padding: 5%;
 }
 
 .card12 {
+  margin-top: 6%;
   display: flex;
   background: white;
   border-radius: 10px;
@@ -194,22 +198,18 @@ transition:400ms;
   max-width: 400px;
   max-height: 250px;
   align-items: center;
-  justify-content: flex-start; /* Alinea a la izquierda */
-}
-
-#izqImg {
-  width: 20%; /* Asegura que la imagen no ocupe más del 40% */
+  justify-content: flex-start;
 }
 
 .card12 img {
-  width: 20%; /* Imagen ajustada al contenedor */
-  height: auto;
+  width: 30%; 
+  height: 100%;
   object-fit: cover;
 }
 
 .card12-content {
   padding: 10px;
-  flex-grow: 1; /* Esto asegura que el contenido ocupe el espacio restante */
+  flex-grow: 1; 
 }
 
 .card12-title {
@@ -228,6 +228,10 @@ transition:400ms;
   font-size: 18px;
   font-weight: bolder;
   color: black;
+}
+
+#abajoCarta{
+  display: flex;
 }
 
 .add-button {
@@ -326,9 +330,7 @@ transition:400ms;
   flex-direction: column;
   align-items: center;
 }
-.contenedorreserva{
 
-}
 .contenedorventajas{
 color: white !important;
 border-top: solid red;
