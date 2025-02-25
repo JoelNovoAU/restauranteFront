@@ -9,7 +9,7 @@
   font-family: "Roboto Condensed", serif !important;
   font-optical-sizing: auto !important;
   font-weight: 700 !important;
-  font-style: normal ;
+  font-style: normal !important;
 }
 body, html {
     margin: 0;
