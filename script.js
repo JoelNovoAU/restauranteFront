@@ -14,8 +14,9 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        fetch("https://restaurante-back2-two.vercel.app/api/register", {
+        console.log({ email, password });  // Verifica que los datos sean correctos
 
+        fetch("https://restaurante-back2-two.vercel.app/api/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);  // Verifica la respuesta del servidor
             if (data.success) {
                 alert("Registro exitoso. Ahora puedes iniciar sesión.");
                 window.location.href = "login.html";
@@ -37,8 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-
 
 
 
