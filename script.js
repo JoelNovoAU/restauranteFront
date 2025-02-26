@@ -186,85 +186,114 @@ $(document).ready(function () {
     obtenerReservas();
 });
 $(document).ready(function () {
-    let cesta = JSON.parse(localStorage.getItem("cesta")) || [];  // Cargar la cesta desde localStorage si existe
-
-    // Capturar el evento de clic en los botones de agregar
+    // Al hacer clic en los botones de agregar productos a la cesta
     $(".add-button").click(function () {
         const comida = $(this).closest(".card12"); // Encontrar el contenedor más cercano
         const id = comida.attr("data-id");
         const nombre = comida.find(".card12-title").text();
         const precio = parseFloat(comida.find(".card12-price").text().replace(",", "."));
 
-        // Buscar si el producto ya está en la cesta
-        const comidaExistente = cesta.find(item => item.id === id);
-        if (comidaExistente) {
-            comidaExistente.cantidad += 1;
-        } else {
-            cesta.push({ id, nombre, precio, cantidad: 1 });
-        }
-
-        // Actualizar la cesta en localStorage
-        localStorage.setItem("cesta", JSON.stringify(cesta));
-
-        // Actualizar la vista de la cesta
-        actualizarCesta();
+        // Enviar los productos al backend (al servidor)
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",  // Endpoint para agregar a la cesta
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                productoId: id,
+                nombre: nombre,
+                precio: precio,
+                cantidad: 1  // Siempre agregamos 1 unidad del producto por cada clic
+            }),
+            success: function (data) {
+                console.log("Producto agregado a la cesta:", data);
+                if (data.success) {
+                    alert("Producto agregado a la cesta.");
+                    // Actualizar la vista de la cesta después de agregar el producto
+                    obtenerCesta();
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al agregar el producto:", error);
+                alert("Hubo un problema al agregar el producto.");
+            }
+        });
     });
 
-    // Función para actualizar la cesta
-    function actualizarCesta() {
-        const listaCesta = $("#pedidoContenido");
-        listaCesta.empty(); // Limpiar antes de actualizar
+    // Función para obtener los productos de la cesta
+    function obtenerCesta() {
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",  // Endpoint para obtener la cesta
+            method: "GET",
+            success: function (data) {
+                if (data.success) {
+                    const listaCesta = $("#pedidoContenido");
+                    listaCesta.empty(); // Limpiar la lista antes de actualizarla
+                    let total = 0;
 
-        let total = 0;
+                    // Iterar sobre los productos de la cesta
+                    data.cesta.forEach(function (item) {
+                        const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
+                        listaCesta.append(li);
+                        total += item.precio * item.cantidad;
+                    });
 
-        // Iterar sobre los items de la cesta y agregar el contenido
-        cesta.forEach(item => {
-            const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
-            listaCesta.append(li);
-            total += item.precio * item.cantidad;
+                    // Actualizar el total de la cesta
+                    $("#totalPedido").text(total.toFixed(2));
+
+                    // Mostrar u ocultar el resumen del pedido
+                    if (data.cesta.length > 0) {
+                        $("#resumenPedido").show();
+                    } else {
+                        $("#resumenPedido").hide();
+                    }
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al obtener la cesta:", error);
+                alert("Hubo un problema al obtener la cesta.");
+            }
         });
-
-        // Actualizar el total en la cesta
-        $("#totalPedido").text(total.toFixed(2));
-
-        // Mostrar u ocultar el resumen del pedido
-        if (cesta.length > 0) {
-            $("#resumenPedido").show();
-        } else {
-            $("#resumenPedido").hide();
-        }
     }
+
+    // Mostrar la cesta cuando se haga clic en el icono de la bolsa
+    $("#botonCesta img").click(function () {
+        obtenerCesta();  // Obtener la cesta y mostrarla
+        $("#resumenPedido").show(); // Mostrar el contenedor de la cesta
+    });
 
     // Botón para cerrar la cesta
     $("#cerrarPedido").click(function () {
         $("#resumenPedido").hide();
     });
 
-    // Mostrar la cesta cuando se haga clic en el icono de la bolsa
-    $("#botonCesta img").click(function () {
-        $("#resumenPedido").show(); // Mostrar el contenedor de la cesta
-    });
-
-    // Eliminar un producto de la cesta (al hacer clic en un producto de la cesta)
+    // Eliminar un producto de la cesta
     $("#pedidoContenido").on("click", ".remove-item", function () {
         const id = $(this).data("id");
 
-        // Eliminar el producto de la cesta local
-        const index = cesta.findIndex(item => item.id === id);
-        if (index !== -1) {
-            cesta.splice(index, 1);
-        }
-
-        // Actualizar la cesta en localStorage
-        localStorage.setItem("cesta", JSON.stringify(cesta));
-
-        // Actualizar la vista de la cesta
-        actualizarCesta();
+        // Hacer la petición DELETE para eliminar el producto de la cesta
+        $.ajax({
+            url: `https://restaurante-back2-two.vercel.app/api/cesta/${id}`,  // Endpoint para eliminar un producto de la cesta
+            method: "DELETE",
+            success: function (response) {
+                if (response.success) {
+                    alert("Producto eliminado de la cesta.");
+                    obtenerCesta();  // Actualizar la vista de la cesta
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al eliminar el producto:", error);
+                alert("Hubo un problema al eliminar el producto.");
+            }
+        });
     });
-
-    // Cargar la cesta desde localStorage al inicio
-    actualizarCesta();
 });
+
 
 
 
