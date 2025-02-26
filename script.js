@@ -186,7 +186,7 @@ $(document).ready(function () {
     obtenerReservas();
 });
 $(document).ready(function () {
-    const cesta = [];
+    let cesta = JSON.parse(localStorage.getItem("cesta")) || [];  // Cargar la cesta desde localStorage si existe
 
     // Capturar el evento de clic en los botones de agregar
     $(".add-button").click(function () {
@@ -203,6 +203,10 @@ $(document).ready(function () {
             cesta.push({ id, nombre, precio, cantidad: 1 });
         }
 
+        // Actualizar la cesta en localStorage
+        localStorage.setItem("cesta", JSON.stringify(cesta));
+
+        // Actualizar la vista de la cesta
         actualizarCesta();
     });
 
@@ -240,7 +244,28 @@ $(document).ready(function () {
     $("#botonCesta img").click(function () {
         $("#resumenPedido").show(); // Mostrar el contenedor de la cesta
     });
+
+    // Eliminar un producto de la cesta (al hacer clic en un producto de la cesta)
+    $("#pedidoContenido").on("click", ".remove-item", function () {
+        const id = $(this).data("id");
+
+        // Eliminar el producto de la cesta local
+        const index = cesta.findIndex(item => item.id === id);
+        if (index !== -1) {
+            cesta.splice(index, 1);
+        }
+
+        // Actualizar la cesta en localStorage
+        localStorage.setItem("cesta", JSON.stringify(cesta));
+
+        // Actualizar la vista de la cesta
+        actualizarCesta();
+    });
+
+    // Cargar la cesta desde localStorage al inicio
+    actualizarCesta();
 });
+
 
 
 
