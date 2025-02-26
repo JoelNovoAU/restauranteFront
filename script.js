@@ -185,6 +185,62 @@ $(document).ready(function () {
     // Llamar a la función para cargar las reservas cuando se cargue la página
     obtenerReservas();
 });
+$(document).ready(function () {
+    const cesta = [];
+
+    // Capturar el evento de clic en los botones de agregar
+    $(".add-button").click(function () {
+        const comida = $(this).closest(".card12"); // Encontrar el contenedor más cercano
+        const id = comida.attr("data-id");
+        const nombre = comida.find(".card12-title").text();
+        const precio = parseFloat(comida.find(".card12-price").text().replace(",", "."));
+
+        // Buscar si el producto ya está en la cesta
+        const comidaExistente = cesta.find(item => item.id === id);
+        if (comidaExistente) {
+            comidaExistente.cantidad += 1;
+        } else {
+            cesta.push({ id, nombre, precio, cantidad: 1 });
+        }
+
+        actualizarCesta();
+    });
+
+    // Función para actualizar la cesta
+    function actualizarCesta() {
+        const listaCesta = $("#pedidoContenido");
+        listaCesta.empty(); // Limpiar antes de actualizar
+
+        let total = 0;
+
+        // Iterar sobre los items de la cesta y agregar el contenido
+        cesta.forEach(item => {
+            const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
+            listaCesta.append(li);
+            total += item.precio * item.cantidad;
+        });
+
+        // Actualizar el total en la cesta
+        $("#totalPedido").text(total.toFixed(2));
+
+        // Mostrar u ocultar el resumen del pedido
+        if (cesta.length > 0) {
+            $("#resumenPedido").show();
+        } else {
+            $("#resumenPedido").hide();
+        }
+    }
+
+    // Botón para cerrar la cesta
+    $("#cerrarPedido").click(function () {
+        $("#resumenPedido").hide();
+    });
+
+    // Mostrar la cesta cuando se haga clic en el icono de la bolsa
+    $("#botonCesta img").click(function () {
+        $("#resumenPedido").show(); // Mostrar el contenedor de la cesta
+    });
+});
 
 
 

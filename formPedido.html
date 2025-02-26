@@ -60,82 +60,56 @@
 
     </header>
     <div id="menus">
-        <div class="card12">
+        <!-- Producto 1 -->
+        <div class="card12" data-id="1" data-precio="10.9">
             <img src="img/hambur-1000.jpg">
             <div class="card12-content">
                 <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
+                <div class="card12-description">Tiras de pollo empanadas con salsa Barbacoa Goiko</div>
                 <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button"><button class="add-button" type="submit">+</button></div>
+                    <div class="card12-price">10.9€</div>
+                    <button class="add-button" type="button">+</button>
                 </div>
             </div>
         </div>
-        <div class="card12">
+
+        <!-- Producto 2 -->
+        <div class="card12" data-id="2" data-precio="12.5">
             <img src="img/menu2.jpg">
             <div class="card12-content">
-                <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
+                <div class="card12-title">BURGER BBQ</div>
+                <div class="card12-description">Hamburguesa con queso cheddar y salsa BBQ</div>
                 <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button">+</div>
+                    <div class="card12-price">12.5€</div>
+                    <button class="add-button" type="button">+</button>
                 </div>
             </div>
         </div>
-        <div class="card12">
+
+        <!-- Producto 3 -->
+        <div class="card12" data-id="3" data-precio="9.8">
             <img src="img/menu3.jpg">
             <div class="card12-content">
-                <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
+                <div class="card12-title">NUGGETS</div>
+                <div class="card12-description">Nuggets de pollo crujientes con papas fritas</div>
                 <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button">+</div>
+                    <div class="card12-price">9.8€</div>
+                    <button class="add-button" type="button">+</button>
                 </div>
             </div>
         </div>
-        <div class="card12">
-            <img src="img/menu4.jpg">
-            <div class="card12-content">
-                <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
-                <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button">+</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card12">
-            <img src="img/menu5.jpg">
-            <div class="card12-content">
-                <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
-                <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button">+</div>
-                </div>
-            </div>
-        </div>
-        <div class="card12">
-            <img src="img/menu6.jpg">
-            <div class="card12-content">
-                <div class="card12-title">CHICKEN TENDERS SMALL</div>
-                <div class="card12-description">Tiras de pollo empanadas acompañados de patatas con salsa Barbacoa Goiko
-                </div>
-                <div id="abajoCarta">
-                    <div class="card12-price">10,9</div>
-                    <div class="add-button">+</div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    </div>
+    <div id="resumenPedido" class="pedido-contenedor" style="display: none;">
+        <h2>Tu Pedido:</h2>
+        <div id="pedidoContenido">
+            <!-- Aquí se llenarán los productos con JS -->
+        </div>
+        <p>Total: <span id="totalPedido">0.00</span>€</p>
+        <button id="cerrarPedido">Cerrar</button>
+    </div>
+    
 <div id="cesta"><div id="localizacion"><p>Recogerás tu pedido en:</p><h5 id="textocesta" >Rúa Rosalia de Castro, 9. 36201 Vigo</h5></div>
 <div id="botonCesta"><img src="img/bolsa2.png" width="40px" height="40px"><a id="botonPedido" href="pagarPedido.html">FINALIZAR PEDIDO</a></div>
 </div>
@@ -159,6 +133,8 @@
         </div>
         </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="js/script.js"></script>
+    </body>
 </html>

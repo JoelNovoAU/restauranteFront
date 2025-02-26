@@ -283,6 +283,19 @@ color: white;
   background-color: rgba(255, 0, 0, 0.501);
   transition:400ms;
 }
+.pedido-contenedor {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 300px;
+  background: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
   width: 100%;
