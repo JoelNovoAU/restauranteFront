@@ -43,12 +43,12 @@ $(document).ready(function () {
     $("#iniciarsesion").click(function () {
         const email = $("#login").val();
         const password = $("#contra").val();
-
+    
         if (!email || !password) {
             alert("Por favor, ingresa tu correo y contraseña.");
             return;
         }
-
+    
         $.ajax({
             url: "https://restaurante-back2-two.vercel.app/api/login",
             method: "POST",
@@ -56,9 +56,15 @@ $(document).ready(function () {
             data: JSON.stringify({ email, password }),
             success: function (data) {
                 console.log(data); // Ver la respuesta en la consola
+    
                 if (data.success) {
                     alert("Inicio de sesión exitoso. Redirigiendo...");
-                    window.location.href = "index.html"; // Redirigir si es exitoso
+                    //usuario admin !!!!
+                    if (email === "admin@admin.admin" && password === "admin") {
+                        window.location.href = "administrador.html";
+                    } else {
+                        window.location.href = "index.html";
+                    }
                 } else {
                     alert(data.message);
                 }
@@ -69,6 +75,7 @@ $(document).ready(function () {
             }
         });
     });
+    
     $("#crearsolicitud").on("click", function (event) {
         event.preventDefault(); // Evita el envío por defecto del formulario
 
