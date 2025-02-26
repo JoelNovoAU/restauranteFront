@@ -191,9 +191,9 @@ $(document).ready(function () {
         const comida = $(this).closest(".card12"); // Encontrar el contenedor más cercano
         const id = comida.attr("data-id");
         const nombre = comida.find(".card12-title").text();
-        const precio = parseFloat(comida.find(".card12-price").text().replace(",", "."));
+        const precio = parseFloat(comida.find(".card12-price").text().replace(/[^\d.]/g, "")); // Limpia caracteres no numéricos
 
-        // Enviar los productos al backend (al servidor)
+        // Enviar los productos al backend
         $.ajax({
             url: "https://restaurante-back2-two.vercel.app/api/cesta",  // Endpoint para agregar a la cesta
             method: "POST",
@@ -208,7 +208,6 @@ $(document).ready(function () {
                 console.log("Producto agregado a la cesta:", data);
                 if (data.success) {
                     alert("Producto agregado a la cesta.");
-                    // Actualizar la vista de la cesta después de agregar el producto
                     obtenerCesta();
                 } else {
                     alert(data.message);
@@ -236,7 +235,7 @@ $(document).ready(function () {
                     data.cesta.forEach(function (item) {
                         const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
                         // Agregar un botón para eliminar el producto
-                        const removeButton = $('<button class="remove-item">Eliminar</button>').data("id", item.productoId);
+                        const removeButton = $('<button class="remove-item">Eliminar</button>').attr("data-id", String(item.productoId));
                         li.append(removeButton);
                         listaCesta.append(li);
                         total += item.precio * item.cantidad;
@@ -255,17 +254,23 @@ $(document).ready(function () {
                     alert(data.message);
                 }
             },
-            error: function (error) {
+            error: function (xhr, status, error) {
                 console.error("Error al obtener la cesta:", error);
-                alert("Hubo un problema al obtener la cesta.");
+                if (xhr.status === 404) {
+                    $("#pedidoContenido").empty();
+                    $("#totalPedido").text("0.00");
+                    $("#resumenPedido").hide();
+                } else {
+                    alert("Hubo un problema al obtener la cesta.");
+                }
             }
         });
     }
 
     // Mostrar la cesta cuando se haga clic en el icono de la bolsa
     $("#botonCesta img").click(function () {
-        obtenerCesta();  // Obtener la cesta y mostrarla
-        $("#resumenPedido").show(); // Mostrar el contenedor de la cesta
+        obtenerCesta();
+        $("#resumenPedido").show();
     });
 
     // Botón para cerrar la cesta
@@ -275,16 +280,16 @@ $(document).ready(function () {
 
     // Eliminar un producto de la cesta
     $("#pedidoContenido").on("click", ".remove-item", function () {
-        const id = $(this).data("id");
+        const id = $(this).attr("data-id");
 
         // Hacer la petición DELETE para eliminar el producto de la cesta
         $.ajax({
-            url: `https://restaurante-back2-two.vercel.app/api/cesta/${id}`,  // Endpoint para eliminar un producto de la cesta
+            url: `https://restaurante-back2-two.vercel.app/api/cesta/${id}`,  // Endpoint para eliminar un producto
             method: "DELETE",
             success: function (response) {
                 if (response.success) {
                     alert("Producto eliminado de la cesta.");
-                    obtenerCesta();  // Actualizar la vista de la cesta
+                    obtenerCesta();
                 } else {
                     alert(response.message);
                 }
