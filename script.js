@@ -235,6 +235,9 @@ $(document).ready(function () {
                     // Iterar sobre los productos de la cesta
                     data.cesta.forEach(function (item) {
                         const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
+                        // Agregar un botón para eliminar el producto
+                        const removeButton = $('<button class="remove-item">Eliminar</button>').data("id", item.productoId);
+                        li.append(removeButton);
                         listaCesta.append(li);
                         total += item.precio * item.cantidad;
                     });
@@ -293,11 +296,6 @@ $(document).ready(function () {
         });
     });
 });
-
-
-
-
-
 
 
 
