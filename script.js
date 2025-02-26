@@ -39,6 +39,38 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+$(document).ready(function () {
+    $("#iniciarsesion").click(function () {
+        const email = $("#login").val();
+        const password = $("#contra").val();
+
+        if (!email || !password) {
+            alert("Por favor, ingresa tu correo y contraseña.");
+            return;
+        }
+
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/login",
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ email, password }),
+            success: function (data) {
+                console.log(data); // Ver la respuesta en la consola
+                if (data.success) {
+                    alert("Inicio de sesión exitoso. Redirigiendo...");
+                    window.location.href = "index.html"; // Redirigir si es exitoso
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("Error en el inicio de sesión:", error);
+                alert("Hubo un problema con el inicio de sesión.");
+            }
+        });
+    });
+});
+
 
 
 
