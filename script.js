@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             console.error("Error en el registro:", error);
-            alert("Hubo un problema con el registro.");
+            alert("Hubo un problema con el registro.",error);
         });
     });
 });
