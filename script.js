@@ -123,7 +123,7 @@ $(document).ready(function () {
                         // Crear la tarjeta para cada reserva
                         const tarjeta = `
                             <div class="card mb-3" style="width: 18rem;">
-                                <div class="card-body">
+                                <div class="card-body" id="divsolicitud">
                                     <h5 class="card-title">${reserva.nombre}</h5>
                                     <h6 class="card-subtitle mb-2 text-muted">${reserva.telefono}</h6>
                                     <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
@@ -148,6 +148,38 @@ $(document).ready(function () {
             }
         });
     }
+    $(".contenedorsolicitudes").on("click", ".btn-cancelar", function () {
+        const tarjeta = $(this).closest(".card"); // Obtener la tarjeta padre
+        const reservaId = tarjeta.attr("data-id"); // Obtener el ID de la reserva
+
+        if (!reservaId) {
+            alert("No se pudo obtener el ID de la reserva.");
+            return;
+        }
+
+        // Confirmación antes de eliminar
+        if (!confirm("¿Estás seguro de que quieres cancelar esta reserva?")) {
+            return;
+        }
+
+        // Hacer petición DELETE al backend
+        $.ajax({
+            url: `https://restaurante-back2-two.vercel.app/api/reservas/${reservaId}`,
+            method: "DELETE",
+            success: function (response) {
+                if (response.success) {
+                    tarjeta.remove(); // Eliminar la tarjeta del DOM
+                    alert("Reserva cancelada correctamente.");
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al cancelar la reserva:", error);
+                alert("Hubo un problema al cancelar la reserva.");
+            }
+        });
+    });
 
     // Llamar a la función para cargar las reservas cuando se cargue la página
     obtenerReservas();
