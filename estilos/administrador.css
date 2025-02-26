@@ -65,3 +65,12 @@ input[type="text"]{
 .btn.btn-warning.btn-lg.btn-block{
 margin-top: 4%;
 }
+.contenedorsolicitudes{
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+    margin-left: 15%;
+margin-top: 4%;
+}
+  #divsolicitud{
+    background-color:  rgb(255, 196, 0) !important;
+}
