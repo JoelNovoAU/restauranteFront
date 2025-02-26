@@ -109,6 +109,48 @@ $(document).ready(function () {
             }
         });
     });
+    function obtenerReservas() {
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/reservas", // URL del backend
+            method: "GET", // Usamos GET para obtener las reservas
+            success: function (data) {
+                if (data.success) {
+                    const contenedor = $(".contenedorsolicitudes");
+                    contenedor.empty(); // Limpiar el contenedor antes de agregar las reservas
+
+                    // Iteramos sobre cada reserva
+                    data.reservas.forEach(function (reserva) {
+                        // Crear la tarjeta para cada reserva
+                        const tarjeta = `
+                            <div class="card mb-3" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title">${reserva.nombre}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted">${reserva.telefono}</h6>
+                                    <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
+                                    <p class="card-text">${new Date(reserva.fecha).toLocaleDateString()}</p>
+                                    <p class="card-text">${reserva.hora}</p>
+                                    <div class="opciones">
+                                        <button type="submit" class="btn btn-danger">CANCELAR</button>
+                                        <button type="submit" class="btn btn-success">ACEPTAR</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
+                    });
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al obtener las reservas:", error);
+                alert("Hubo un problema al obtener las reservas.");
+            }
+        });
+    }
+
+    // Llamar a la función para cargar las reservas cuando se cargue la página
+    obtenerReservas();
 });
 
 
