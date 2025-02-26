@@ -69,6 +69,39 @@ $(document).ready(function () {
             }
         });
     });
+    $("#crearsolicitud").on("click", function (event) {
+        event.preventDefault(); // Evita el envío por defecto del formulario
+
+        const nombre = $("#nombre").val();
+        const telefono = $("#telefono").val();
+        const comensales = $("#comensales").val();
+        const fecha = $("#fecha").val();
+        const hora = $("#hora").val();
+
+        if (!nombre || !telefono || !comensales || !fecha || !hora) {
+            alert("Por favor, completa todos los campos.");
+            return;
+        }
+
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/reservas",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ nombre, telefono, comensales, fecha, hora }),
+            success: function (data) {
+                if (data.success) {
+                    alert("Reserva creada con éxito.");
+                    window.location.href = "index.html"; // Redirigir si es exitoso
+                } else {
+                    alert(data.message);
+                }
+            },
+            error: function (error) {
+                console.error("Error al enviar la reserva:", error);
+                alert("Hubo un problema al procesar la reserva.");
+            }
+        });
+    });
 });
 
 
