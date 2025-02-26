@@ -122,20 +122,21 @@ $(document).ready(function () {
                     data.reservas.forEach(function (reserva) {
                         // Crear la tarjeta para cada reserva
                         const tarjeta = `
-                            <div class="card mb-3" style="width: 18rem;">
-                                <div class="card-body" id="divsolicitud">
-                                    <h5 class="card-title">${reserva.nombre}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">${reserva.telefono}</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
-                                    <p class="card-text">${new Date(reserva.fecha).toLocaleDateString()}</p>
-                                    <p class="card-text">${reserva.hora}</p>
-                                    <div class="opciones">
-                                        <button type="submit" class="btn btn-danger">CANCELAR</button>
-                                        <button type="submit" class="btn btn-success">ACEPTAR</button>
-                                    </div>
-                                </div>
-                            </div>
-                        `;
+    <div class="card mb-3" style="width: 18rem;" data-id="${reserva._id}">
+        <div class="card-body" id="divsolicitud">
+            <h5 class="card-title">${reserva.nombre}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">${reserva.telefono}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
+            <p class="card-text">${new Date(reserva.fecha).toLocaleDateString()}</p>
+            <p class="card-text">${reserva.hora}</p>
+            <div class="opciones">
+                <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
+                <button type="submit" class="btn btn-success">ACEPTAR</button>
+            </div>
+        </div>
+    </div>
+`;
+
                         contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
                     });
                 } else {
@@ -151,17 +152,17 @@ $(document).ready(function () {
     $(".contenedorsolicitudes").on("click", ".btn-cancelar", function () {
         const tarjeta = $(this).closest(".card"); // Obtener la tarjeta padre
         const reservaId = tarjeta.attr("data-id"); // Obtener el ID de la reserva
-
+    
         if (!reservaId) {
             alert("No se pudo obtener el ID de la reserva.");
             return;
         }
-
+    
         // Confirmación antes de eliminar
         if (!confirm("¿Estás seguro de que quieres cancelar esta reserva?")) {
             return;
         }
-
+    
         // Hacer petición DELETE al backend
         $.ajax({
             url: `https://restaurante-back2-two.vercel.app/api/reservas/${reservaId}`,
@@ -180,7 +181,7 @@ $(document).ready(function () {
             }
         });
     });
-
+    
     // Llamar a la función para cargar las reservas cuando se cargue la página
     obtenerReservas();
 });
