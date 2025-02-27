@@ -206,7 +206,7 @@ $(document).ready(function () {
                 cantidad: 1  
             }),
             success: function (data) {
-                console.log("Producto agregado a la cesta:", data);
+                console.log("✅ Producto agregado a la cesta:", data);
                 if (data.success) {
                     alert("✅ Producto agregado a la cesta.");
                     obtenerCesta(); // Actualiza la cesta
@@ -227,61 +227,59 @@ $(document).ready(function () {
             url: "https://restaurante-back2-two.vercel.app/api/cesta",
             method: "GET",
             success: function (data) {
-                if (data.success) {
-                    const listaCesta = $("#pedidoContenido");
-                    listaCesta.empty(); 
-                    let total = 0;
+                console.log("📦 Datos de la cesta recibidos:", data); // Verificar en consola los datos recibidos
+                
+                const listaCesta = $("#pedidoContenido");
+                listaCesta.empty(); 
+                let total = 0;
 
-                    if (data.cesta.length === 0) {
-                        $("#resumenPedido").hide();
-                        return;
-                    }
-
-                    // Iterar sobre los productos de la cesta
-                    data.cesta.forEach(function (item) {
-                        const li = $(`
-                            <div class="cesta-item">
-                                <img src="${item.imagen}" alt="${item.nombre}" class="cesta-img">
-                                <div class="cesta-info">
-                                    <p>${item.nombre} x${item.cantidad}</p>
-                                    <p>€${(item.precio * item.cantidad).toFixed(2)}</p>
-                                </div>
-                                <button class="remove-item" data-id="${item.productoId}">Eliminar</button>
-                            </div>
-                        `);
-
-                        listaCesta.append(li);
-                        total += item.precio * item.cantidad;
-                    });     
-
-                    $("#totalPedido").text(total.toFixed(2));
-                    $("#resumenPedido").show();
-                } else {
-                    alert("⚠️ " + data.message);
+                if (!data.success || data.cesta.length === 0) {
+                    $("#pedidoContenido").html("<p>🛒 La cesta está vacía.</p>");
+                    $("#totalPedido").text("0.00");
+                    $("#resumenPedido").show(); // Se muestra aunque esté vacía
+                    return;
                 }
+
+                // Iterar sobre los productos de la cesta
+                data.cesta.forEach(function (item) {
+                    const li = $(`
+                        <div class="cesta-item">
+                            <img src="${item.imagen}" alt="${item.nombre}" class="cesta-img">
+                            <div class="cesta-info">
+                                <p>${item.nombre} x${item.cantidad}</p>
+                                <p>€${(item.precio * item.cantidad).toFixed(2)}</p>
+                            </div>
+                            <button class="remove-item" data-id="${item.productoId}">Eliminar</button>
+                        </div>
+                    `);
+
+                    listaCesta.append(li);
+                    total += item.precio * item.cantidad;
+                });     
+
+                $("#totalPedido").text(total.toFixed(2));
+                $("#resumenPedido").fadeIn(); // Mostrar la cesta con animación
             },
             error: function (xhr, status, error) {
                 console.error("❌ Error al obtener la cesta:", error);
-                $("#pedidoContenido").empty();
+                $("#pedidoContenido").html("<p>❌ No se pudo cargar la cesta.</p>");
                 $("#totalPedido").text("0.00");
-                $("#resumenPedido").hide();
-                alert("Hubo un problema al obtener la cesta.");
+                $("#resumenPedido").show(); // Se muestra aunque haya error
             }
         });
     }
 
-    // Mostrar la cesta cuando se haga clic en el icono de la bolsa
+    // 📌 Mostrar la cesta al hacer clic en el icono de la bolsa
     $("#botonCesta img").click(function () {
         obtenerCesta();
-        $("#resumenPedido").show();
     });
 
-    // Botón para cerrar la cesta
+    // 📌 Botón para cerrar la cesta
     $("#cerrarPedido").click(function () {
-        $("#resumenPedido").hide();
+        $("#resumenPedido").fadeOut(); // Ocultar con animación
     });
 
-    // Eliminar un producto de la cesta
+    // 📌 Eliminar un producto de la cesta
     $("#pedidoContenido").on("click", ".remove-item", function () {
         const id = $(this).attr("data-id");
 
@@ -303,6 +301,7 @@ $(document).ready(function () {
         });
     });
 });
+
 
 
 
