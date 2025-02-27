@@ -192,11 +192,10 @@ $(document).ready(function () {
         const id = comida.attr("data-id");
         const nombre = comida.find(".card12-title").text();
         const precio = parseFloat(comida.find(".card12-price").text().replace(/[^\d.]/g, "")); 
-        const imagen = comida.find("img").attr("src"); // Obtener la URL de la imagen
-
+        const imagen = comida.find("img").attr("src");
 
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/cesta",  
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
@@ -209,14 +208,14 @@ $(document).ready(function () {
             success: function (data) {
                 console.log("Producto agregado a la cesta:", data);
                 if (data.success) {
-                    alert("Producto agregado a la cesta.");
-                    obtenerCesta();
+                    alert("✅ Producto agregado a la cesta.");
+                    obtenerCesta(); // Actualiza la cesta
                 } else {
-                    alert(data.message);
+                    alert("⚠️ " + data.message);
                 }
             },
             error: function (error) {
-                console.error("Error al agregar el producto:", error);
+                console.error("❌ Error al agregar el producto:", error);
                 alert("Hubo un problema al agregar el producto.");
             }
         });
@@ -225,13 +224,18 @@ $(document).ready(function () {
     // Función para obtener los productos de la cesta
     function obtenerCesta() {
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/cesta",  
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",
             method: "GET",
             success: function (data) {
                 if (data.success) {
                     const listaCesta = $("#pedidoContenido");
                     listaCesta.empty(); 
                     let total = 0;
+
+                    if (data.cesta.length === 0) {
+                        $("#resumenPedido").hide();
+                        return;
+                    }
 
                     // Iterar sobre los productos de la cesta
                     data.cesta.forEach(function (item) {
@@ -248,28 +252,20 @@ $(document).ready(function () {
 
                         listaCesta.append(li);
                         total += item.precio * item.cantidad;
-                    });
+                    });     
 
                     $("#totalPedido").text(total.toFixed(2));
-
-                    if (data.cesta.length > 0) {
-                        $("#resumenPedido").show();
-                    } else {
-                        $("#resumenPedido").hide();
-                    }
+                    $("#resumenPedido").show();
                 } else {
-                    alert(data.message);
+                    alert("⚠️ " + data.message);
                 }
             },
             error: function (xhr, status, error) {
-                console.error("Error al obtener la cesta:", error);
-                if (xhr.status === 404) {
-                    $("#pedidoContenido").empty();
-                    $("#totalPedido").text("0.00");
-                    $("#resumenPedido").hide();
-                } else {
-                    alert("Hubo un problema al obtener la cesta.");
-                }
+                console.error("❌ Error al obtener la cesta:", error);
+                $("#pedidoContenido").empty();
+                $("#totalPedido").text("0.00");
+                $("#resumenPedido").hide();
+                alert("Hubo un problema al obtener la cesta.");
             }
         });
     }
@@ -294,19 +290,20 @@ $(document).ready(function () {
             method: "DELETE",
             success: function (response) {
                 if (response.success) {
-                    alert("Producto eliminado de la cesta.");
-                    obtenerCesta();
+                    alert("✅ Producto eliminado de la cesta.");
+                    obtenerCesta(); // Refrescar la lista
                 } else {
-                    alert(response.message);
+                    alert("⚠️ " + response.message);
                 }
             },
             error: function (error) {
-                console.error("Error al eliminar el producto:", error);
+                console.error("❌ Error al eliminar el producto:", error);
                 alert("Hubo un problema al eliminar el producto.");
             }
         });
     });
 });
+
 
 
 
