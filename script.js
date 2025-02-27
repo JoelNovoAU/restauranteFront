@@ -422,45 +422,56 @@ $(document).ready(function () {
 
     // Función para obtener los pedidos desde el servidor
     // Función para obtener los pedidos desde el servidor
-function obtenerPedidos() {
-    $.ajax({
-        url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend
-        method: "GET", // Usamos GET para obtener los pedidos
-        success: function (data) {
-            console.log(data); // Verifica lo que devuelve el servidor
-            if (data.success) {
-                const contenedor = $(".contenedorPedidos");
-                contenedor.empty(); // Limpiar el contenedor antes de agregar los pedidos
+    function obtenerPedidos() {
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend
+            method: "GET", // Usamos GET para obtener los pedidos
+            success: function (data) {
+                console.log(data); // Verifica lo que devuelve el servidor
+                if (data.success) {
+                    const contenedor = $(".contenedorPedidos");
+                    contenedor.empty(); // Limpiar el contenedor antes de agregar los pedidos
 
-                // Iteramos sobre cada pedido
-                data.pedidos.forEach(function (pedido) {
-                    // Crear la tarjeta para cada pedido
-                    const tarjeta = `
-                    <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
-                        <div class="card-body" id="divsolicitud">
-                            <h5 class="card-title">${pedido.cliente.nombre}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
-                            <p class="card-text">Total: €${pedido.total}</p>
-                            <div class="opciones">
-                                <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
-                                <button type="submit" class="btn btn-success">ACEPTAR</button>
+                    // Iteramos sobre cada pedido
+                    data.pedidos.forEach(function (pedido) {
+                        // Crear la lista de productos con su nombre y cantidad
+                        let listaProductos = '';
+                        pedido.productos.forEach(function (producto) {
+                            listaProductos += `
+                                <p><strong>${producto.nombre}</strong> - Cantidad: ${producto.cantidad}</p>
+                            `;
+                        });
+
+                        // Crear la tarjeta para cada pedido
+                        const tarjeta = `
+                        <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
+                            <div class="card-body" id="divsolicitud">
+                                <h5 class="card-title">${pedido.cliente.nombre}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
+                                <p class="card-text">Total: €${pedido.total}</p>
+                                <div class="productos">
+                                    ${listaProductos}  <!-- Aquí agregamos los productos con sus cantidades -->
+                                </div>
+                                <div class="opciones">
+                                    <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
+                                    <button type="submit" class="btn btn-success">ACEPTAR</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                  `;
-                  
-                    contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
-                });
-            } else {
-                alert(data.message); // Mensaje de error si no se obtiene éxito
+                        `;
+
+                        contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
+                    });
+                } else {
+                    alert("⚠️ " + data.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("❌ Error al obtener los pedidos:", error);
+                alert("❌ Hubo un problema al obtener los pedidos.");
             }
-        },
-        error: function (error) {
-            console.error("Error al obtener los pedidos:", error); // Registra el error
-            alert("Hubo un problema al obtener los pedidos."); // Muestra un mensaje de error
-        }
-    });
-}
+        });
+    }
 
     
 
