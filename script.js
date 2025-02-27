@@ -188,21 +188,23 @@ $(document).ready(function () {
 $(document).ready(function () {
     // Al hacer clic en los botones de agregar productos a la cesta
     $(".add-button").click(function () {
-        const comida = $(this).closest(".card12"); // Encontrar el contenedor más cercano
+        const comida = $(this).closest(".card12"); 
         const id = comida.attr("data-id");
         const nombre = comida.find(".card12-title").text();
-        const precio = parseFloat(comida.find(".card12-price").text().replace(/[^\d.]/g, "")); // Limpia caracteres no numéricos
+        const precio = parseFloat(comida.find(".card12-price").text().replace(/[^\d.]/g, "")); 
+        const imagen = comida.find("img").attr("src"); // Obtener la URL de la imagen
 
-        // Enviar los productos al backend
+
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/cesta",  // Endpoint para agregar a la cesta
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",  
             method: "POST",
             contentType: "application/json",
             data: JSON.stringify({
                 productoId: id,
                 nombre: nombre,
                 precio: precio,
-                cantidad: 1  // Siempre agregamos 1 unidad del producto por cada clic
+                imagen: imagen,
+                cantidad: 1  
             }),
             success: function (data) {
                 console.log("Producto agregado a la cesta:", data);
@@ -223,28 +225,33 @@ $(document).ready(function () {
     // Función para obtener los productos de la cesta
     function obtenerCesta() {
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/cesta",  // Endpoint para obtener la cesta
+            url: "https://restaurante-back2-two.vercel.app/api/cesta",  
             method: "GET",
             success: function (data) {
                 if (data.success) {
                     const listaCesta = $("#pedidoContenido");
-                    listaCesta.empty(); // Limpiar la lista antes de actualizarla
+                    listaCesta.empty(); 
                     let total = 0;
 
                     // Iterar sobre los productos de la cesta
                     data.cesta.forEach(function (item) {
-                        const li = $("<p></p>").text(`${item.nombre} x${item.cantidad} - €${(item.precio * item.cantidad).toFixed(2)}`);
-                        // Agregar un botón para eliminar el producto
-                        const removeButton = $('<button class="remove-item">Eliminar</button>').attr("data-id", String(item.productoId));
-                        li.append(removeButton);
+                        const li = $(`
+                            <div class="cesta-item">
+                                <img src="${item.imagen}" alt="${item.nombre}" class="cesta-img">
+                                <div class="cesta-info">
+                                    <p>${item.nombre} x${item.cantidad}</p>
+                                    <p>€${(item.precio * item.cantidad).toFixed(2)}</p>
+                                </div>
+                                <button class="remove-item" data-id="${item.productoId}">Eliminar</button>
+                            </div>
+                        `);
+
                         listaCesta.append(li);
                         total += item.precio * item.cantidad;
                     });
 
-                    // Actualizar el total de la cesta
                     $("#totalPedido").text(total.toFixed(2));
 
-                    // Mostrar u ocultar el resumen del pedido
                     if (data.cesta.length > 0) {
                         $("#resumenPedido").show();
                     } else {
@@ -282,9 +289,8 @@ $(document).ready(function () {
     $("#pedidoContenido").on("click", ".remove-item", function () {
         const id = $(this).attr("data-id");
 
-        // Hacer la petición DELETE para eliminar el producto de la cesta
         $.ajax({
-            url: `https://restaurante-back2-two.vercel.app/api/cesta/${id}`,  // Endpoint para eliminar un producto
+            url: `https://restaurante-back2-two.vercel.app/api/cesta/${id}`,  
             method: "DELETE",
             success: function (response) {
                 if (response.success) {

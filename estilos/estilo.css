@@ -296,6 +296,32 @@ color: white;
   z-index: 1000;
 }
 
+.cesta-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.cesta-img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.cesta-info {
+  flex-grow: 1;
+}
+
+.remove-item {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+
 /*CONTACTO SUB PAG*****************/
 .contenedorcontacto{
   width: 100%;
