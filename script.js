@@ -423,44 +423,52 @@ $(document).ready(function () {
     // Función para obtener los pedidos desde el servidor
     function obtenerPedidos() {
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend
-            method: "GET", // Usamos GET para obtener los pedidos
-            success: function (data) {
-                console.log(data); // Verifica lo que devuelve el servidor
-                if (data.success) {
-                    const contenedor = $(".contenedorPedidos");
-                    contenedor.empty(); // Limpiar el contenedor antes de agregar los pedidos
-    
-                    // Iteramos sobre cada pedido
-                    data.pedidos.forEach(function (pedido) {
-                        // Crear la tarjeta para cada pedido
-                        const tarjeta = `
-                        <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
-                            <div class="card-body">
-                                <h5 class="card-title">${pedido.cliente.nombre}</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
-                                <p class="card-text">Total: €${pedido.total}</p>
-                                <div class="opciones">
-                                    <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
-                                    <button type="submit" class="btn btn-success">ACEPTAR</button>
-                                </div>
-                            </div>
-                        </div>
-                      `;
-                      
-                        contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
-                    });
-                } else {
-                    alert(data.message); // Mensaje de error si no se obtiene éxito
-                }
-            },
-            error: function (error) {
-                console.error("Error al obtener los pedidos:", error); // Registra el error
-                alert("Hubo un problema al obtener los pedidos."); // Muestra un mensaje de error
+          url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend
+          method: "GET", // Usamos GET para obtener los pedidos
+          success: function (data) {
+            console.log(data); // Verifica lo que devuelve el servidor
+            if (data.success) {
+              const contenedor = $(".contenedorPedidos");
+              contenedor.empty(); // Limpiar el contenedor antes de agregar los pedidos
+      
+              // Iteramos sobre cada pedido
+              data.pedidos.forEach(function (pedido) {
+                // Crear la tarjeta para cada pedido
+                const tarjeta = `
+                  <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
+                    <div class="card-body">
+                      <h5 class="card-title">${pedido.cliente.nombre}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
+                      <p class="card-text">Total: €${pedido.total}</p>
+                      <div class="productos">
+                        <h6>Productos:</h6>
+                        <ul>
+                          ${pedido.productos.map(producto => {
+                            return `<li>${producto.nombre} x ${producto.cantidad} - €${producto.precio}</li>`;
+                          }).join('')}
+                        </ul>
+                      </div>
+                      <div class="opciones">
+                        <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
+                        <button type="submit" class="btn btn-success">ACEPTAR</button>
+                      </div>
+                    </div>
+                  </div>
+                `;
+      
+                contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
+              });
+            } else {
+              alert(data.message); // Mensaje de error si no se obtiene éxito
             }
+          },
+          error: function (error) {
+            console.error("Error al obtener los pedidos:", error); // Registra el error
+            alert("Hubo un problema al obtener los pedidos."); // Muestra un mensaje de error
+          }
         });
-    }
-    
+      }
+      
 
     // Función para cancelar un pedido
     $(".contenedorPedidos").on("click", ".btn-cancelar", function () {
