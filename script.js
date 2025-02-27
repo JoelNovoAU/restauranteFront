@@ -303,6 +303,9 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    // Variable global para almacenar los productos de la cesta
+    let productosCesta = [];
+
     // Obtener los productos de la cesta desde la base de datos
     function obtenerCesta() {
         $.ajax({
@@ -321,8 +324,11 @@ $(document).ready(function () {
                     return;
                 }
 
+                // Guardar los productos de la cesta en la variable global
+                productosCesta = data.cesta;
+
                 // Iterar sobre los productos de la cesta y agregar al contenedor
-                data.cesta.forEach(function (item) {
+                productosCesta.forEach(function (item) {
                     const productoHTML = `
                         <div class="order-item">
                             <img src="${item.imagen}" alt="${item.nombre}">
@@ -349,6 +355,67 @@ $(document).ready(function () {
 
     // Llamar a la función para obtener la cesta cuando la página se carga
     obtenerCesta();
+
+    // Al hacer clic en el botón "Pagar ahora", enviar el pedido al servidor
+    $("#payment-form").submit(function (e) {
+        e.preventDefault();  // Evitar que el formulario se envíe de manera tradicional
+
+        // Obtener los datos del formulario
+        const nombre = $("#nombre").val();
+        const apellidos = $("#apellidos").val();
+        const correo = $("#correo").val();
+        const telefono = $("#telefono").val();
+        const titular = $("#titular").val();
+        const numeroTarjeta = $("#numero-tarjeta").val();
+        const caducidad = $("#caducidad").val();
+        const cvv = $("#cvv").val();
+
+        // Verificar que haya productos en la cesta
+        if (productosCesta.length === 0) {
+            alert("⚠️ No tienes productos en la cesta.");
+            return;
+        }
+
+        const total = parseFloat($("#totalPedido").text().replace('€', '').trim());
+
+        // Preparar los datos del pedido
+        const pedido = {
+            cliente: {
+                nombre: nombre,
+                apellidos: apellidos,
+                correo: correo,
+                telefono: telefono
+            },
+            pago: {
+                titular: titular,
+                numeroTarjeta: numeroTarjeta,
+                caducidad: caducidad,
+                cvv: cvv
+            },
+            productos: productosCesta,  // Usamos los productos que ya están almacenados
+            total: total
+        };
+
+        // Enviar el pedido al servidor
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/pedidos",  // URL para enviar el pedido
+            method: "POST",
+            contentType: "application/json",
+            data: JSON.stringify(pedido),
+            success: function (response) {
+                if (response.success) {
+                    alert("✅ Pedido realizado con éxito.");
+                    // Puedes redirigir a otra página, limpiar el formulario, etc.
+                } else {
+                    alert("⚠️ " + response.message);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error("❌ Error al realizar el pedido:", error);
+                alert("❌ Hubo un problema al realizar el pedido.");
+            }
+        });
+    });
 });
 
 
