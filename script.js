@@ -435,20 +435,19 @@ $(document).ready(function () {
                     data.pedidos.forEach(function (pedido) {
                         // Crear la tarjeta para cada pedido
                         const tarjeta = `
-                            <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${pedido.cliente.nombre}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
-                                    <h6 class="card-subtitle mb-2 text-muted">PENDIENTE</h6>
-                                    <p class="card-text">Total: €${pedido.total}</p>
-                                    <p class="card-text">${pedido.fecha}</p>
-                                    <div class="opciones">
-                                        <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
-                                        <button type="submit" class="btn btn-success">ACEPTAR</button>
-                                    </div>
+                        <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
+                            <div class="card-body">
+                                <h5 class="card-title">${pedido.cliente.nombre}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
+                                <p class="card-text">Total: €${pedido.total}</p>
+                                <div class="opciones">
+                                    <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
+                                    <button type="submit" class="btn btn-success">ACEPTAR</button>
                                 </div>
                             </div>
-                        `;
+                        </div>
+                      `;
+                      
                         contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
                     });
                 } else {
