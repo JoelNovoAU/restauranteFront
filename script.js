@@ -423,13 +423,14 @@ $(document).ready(function () {
     // Función para obtener los pedidos desde el servidor
     function obtenerPedidos() {
         $.ajax({
-            url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend para obtener pedidos
+            url: "https://restaurante-back2-two.vercel.app/api/pedidos", // URL del backend
             method: "GET", // Usamos GET para obtener los pedidos
             success: function (data) {
+                console.log(data); // Verifica lo que devuelve el servidor
                 if (data.success) {
                     const contenedor = $(".contenedorPedidos");
                     contenedor.empty(); // Limpiar el contenedor antes de agregar los pedidos
-
+    
                     // Iteramos sobre cada pedido
                     data.pedidos.forEach(function (pedido) {
                         // Crear la tarjeta para cada pedido
@@ -448,19 +449,19 @@ $(document).ready(function () {
                                 </div>
                             </div>
                         `;
-
                         contenedor.append(tarjeta); // Añadir la tarjeta al contenedor
                     });
                 } else {
-                    alert(data.message);
+                    alert(data.message); // Mensaje de error si no se obtiene éxito
                 }
             },
             error: function (error) {
-                console.error("Error al obtener los pedidos:", error);
-                alert("Hubo un problema al obtener los pedidos.");
+                console.error("Error al obtener los pedidos:", error); // Registra el error
+                alert("Hubo un problema al obtener los pedidos."); // Muestra un mensaje de error
             }
         });
     }
+    
 
     // Función para cancelar un pedido
     $(".contenedorPedidos").on("click", ".btn-cancelar", function () {
