@@ -302,6 +302,54 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready(function () {
+    // Obtener los productos de la cesta desde la base de datos
+    function obtenerCesta() {
+        $.ajax({
+            url: "https://restaurante-back2-two.vercel.app/api/cesta", // Cambia esta URL si es necesario
+            method: "GET",
+            success: function (data) {
+                console.log("📦 Productos recibidos:", data); // Verificar en consola los datos recibidos
+                
+                const listaProductos = $("#order-items-container");
+                listaProductos.empty();  // Vaciar el contenedor antes de agregar los productos
+
+                let total = 0;
+                if (!data.success || data.cesta.length === 0) {
+                    $("#order-items-container").html("<p>🛒 Tu cesta está vacía.</p>");
+                    $("#totalPedido").text("0.00€");
+                    return;
+                }
+
+                // Iterar sobre los productos de la cesta y agregar al contenedor
+                data.cesta.forEach(function (item) {
+                    const productoHTML = `
+                        <div class="order-item">
+                            <img src="${item.imagen}" alt="${item.nombre}">
+                            <div>
+                                <strong>${item.nombre}</strong>
+                                <p>${item.descripcion || "Descripción no disponible"}</p> <!-- Puedes agregar más información si tienes -->
+                            </div>
+                            <p class="price">€${(item.precio * item.cantidad).toFixed(2)}</p>
+                        </div>
+                    `;
+                    listaProductos.append(productoHTML);  // Agregar el producto al contenedor
+                    total += item.precio * item.cantidad; // Sumar al total
+                });
+
+                $("#totalPedido").text(total.toFixed(2) + "€");  // Actualizar el total
+            },
+            error: function (xhr, status, error) {
+                console.error("❌ Error al obtener los productos:", error);
+                $("#order-items-container").html("<p>❌ No se pudo cargar los productos de la cesta.</p>");
+                $("#totalPedido").text("0.00€");
+            }
+        });
+    }
+
+    // Llamar a la función para obtener la cesta cuando la página se carga
+    obtenerCesta();
+});
 
 
 
