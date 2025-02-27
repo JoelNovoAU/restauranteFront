@@ -479,10 +479,10 @@ $(".contenedorPedidos").on("click", ".btn-cancelar", function () {
         return;
     }
 
-    // Hacer petición PATCH al backend
+    // Hacer petición DELETE al backend
     $.ajax({
-        url: `https://restaurante-back2-two.vercel.app/api/pedidos/cancelar/${pedidoId}`, // URL para cancelar el pedido
-        method: "PATCH", // Cambiar a PATCH
+        url: `https://restaurante-back2-two.vercel.app/api/pedidos/${pedidoId}`, // URL para cancelar el pedido
+        method: "DELETE", // Cambiar a DELETE
         success: function (response) {
             if (response.success) {
                 tarjeta.remove(); // Eliminar la tarjeta del DOM
@@ -498,7 +498,7 @@ $(".contenedorPedidos").on("click", ".btn-cancelar", function () {
     });
 });
 
-    // Función para aceptar un pedido
+
    // Función para aceptar un pedido
 $(".contenedorPedidos").on("click", ".btn-success", function () {
     const tarjeta = $(this).closest(".card"); // Obtener la tarjeta padre
