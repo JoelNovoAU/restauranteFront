@@ -16,19 +16,19 @@
                 <div class="form-group">
                     <div class="input-box">
                         <label>Nombre</label>
-                        <input type="text" placeholder="Introduce tu nombre"required>
+                        <input id="nombre" type="text" placeholder="Introduce tu nombre" required>
                     </div>
                     <div class="input-box">
                         <label>Apellidos</label>
-                        <input type="text" placeholder="Introduce tus apellidos">
+                        <input id="apellidos" type="text" placeholder="Introduce tus apellidos" required>
                     </div>
                     <div class="input-box">
                         <label>Correo electrónico</label>
-                        <input type="email" placeholder="Introduce tu correo electrónico"required>
+                        <input id="correo" type="email" placeholder="Introduce tu correo electrónico" required>
                     </div>
                     <div class="input-box">
                         <label>Teléfono</label>
-                        <input type="tel" placeholder="Introduce tu número de teléfono" required>
+                        <input id="telefono" type="tel" placeholder="Introduce tu número de teléfono" required>
                     </div>
                 </div>
             </div>
@@ -41,35 +41,35 @@
                 <div class="total">
                     <strong>TOTAL</strong>
                     <span id="totalPedido">0.00€</span>
-                </div>   
-            </div>            
+                </div>
+            </div>
         </div>
         <div class="payment-container">
             <h2>Introduce los datos de tu tarjeta de pago</h2>
-            <form>
+            <form id="payment-form">
                 <div class="input-box">
                     <label>Titular de la tarjeta</label>
-                    <input type="text" placeholder="Nombre en la tarjeta"required>
+                    <input id="titular" type="text" placeholder="Nombre en la tarjeta" required>
                 </div>
                 <div class="input-box">
                     <label>Número de la tarjeta</label>
-                    <input type="text" placeholder="Introduce tu tarjeta..."required>
+                    <input id="numero-tarjeta" type="text" placeholder="Introduce tu tarjeta..." required>
                 </div>
                 <div class="input-box">
                     <label>Fecha de caducidad</label>
-                    <input type="text" placeholder="MM/AA">
+                    <input id="caducidad" type="text" placeholder="MM/AA" required>
                 </div>
-                <div class="input-box" >
+                <div class="input-box">
                     <label>CVV</label>
-                    <input type="text" placeholder="CVV" required>
+                    <input id="cvv" type="text" placeholder="CVV" required>
                 </div>
-                <button type="submit" class="pay-button">Pagar ahora</button>
+                <button type="button" class="pay-button">Pagar ahora</button>
             </form>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
