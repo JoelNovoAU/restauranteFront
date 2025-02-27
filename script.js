@@ -448,10 +448,10 @@ $(document).ready(function () {
                             <div class="card-body" id="divsolicitud">
                                 <h5 class="card-title">${pedido.cliente.nombre}</h5>
                                 <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
-                                <p class="card-text">Total: €${pedido.total}</p>
                                 <div class="productos">
                                     ${listaProductos}  <!-- Aquí agregamos los productos con sus cantidades -->
                                 </div>
+                                  <p class="card-text">Total: €${pedido.total}</p>
                                 <div class="opciones">
                                     <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
                                     <button type="submit" class="btn btn-success">ACEPTAR</button>
