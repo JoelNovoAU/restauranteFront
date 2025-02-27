@@ -437,7 +437,7 @@ function obtenerPedidos() {
                     // Crear la tarjeta para cada pedido
                     const tarjeta = `
                     <div class="card mb-3" style="width: 18rem;" data-id="${pedido._id}">
-                        <div class="card-body">
+                        <div class="card-body" id="divsolicitud">
                             <h5 class="card-title">${pedido.cliente.nombre}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">${pedido.cliente.telefono}</h6>
                             <p class="card-text">Total: €${pedido.total}</p>
