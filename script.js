@@ -128,7 +128,6 @@ $(document).ready(function () {
             <p class="card-text">${reserva.hora}</p>
             <div class="opciones">
                 <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
-                <button type="submit" class="btn btn-success">ACEPTAR</button>
             </div>
         </div>
     </div>
@@ -430,7 +429,7 @@ $(document).ready(function () {
                                   <p class="card-text">Total: €${pedido.total}</p>
                                 <div class="opciones">
                                     <button type="submit" class="btn btn-danger btn-cancelar">CANCELAR</button>
-                                    <button type="submit" class="btn btn-success">ACEPTAR</button>
+                                   
                                 </div>
                             </div>
                         </div>
