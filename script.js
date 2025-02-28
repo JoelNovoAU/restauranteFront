@@ -205,7 +205,7 @@ $(document).ready(function () {
                     alert(" Producto agregado a la cesta.");
                     obtenerCesta(); 
                 } else {
-                    alert("⚠️ " + data.message);
+                    alert(" " + data.message);
                 }
             },
             error: function (error) {
@@ -220,7 +220,7 @@ $(document).ready(function () {
             url: "https://restaurante-back2-two.vercel.app/api/cesta",
             method: "GET",
             success: function (data) {
-                console.log("📦 Datos de la cesta recibidos:", data); //consola datos
+                console.log(" Datos de la cesta recibidos:", data); //consola datos
                 
                 const listaCesta = $("#pedidoContenido");
                 listaCesta.empty(); 
@@ -385,9 +385,10 @@ $(document).ready(function () {
             data: JSON.stringify(pedido),
             success: function (response) {
                 if (response.success) {
-                    alert("Z Pedido realizado con éxito.");
+                    alert(" Pedido realizado con éxito.");
+                    window.location.href = "index.html";
                 } else {
-                    alert("Z" + response.message);
+                    alert("" + response.message);
                 }
             },
             error: function (xhr, status, error) {
