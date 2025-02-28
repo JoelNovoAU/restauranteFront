@@ -269,6 +269,10 @@ color: white;
   font-weight: bold;
 }
 
+#botonCesta{
+  cursor: pointer;
+}
+
 #botonPedido{
   padding: 15px;
   border-radius: 40px;
@@ -285,21 +289,34 @@ color: white;
 }
 .pedido-contenedor {
   position: fixed;
-  top: 50%;
+  top: 45%;
   right: 0;
   transform: translateY(-50%);
   width: 300px;
-  background: white;
+  background-color: rgba(255, 255, 255, 0.871);
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: -5px 0px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  z-index: 2000;
 }
 
 .cesta-item {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  
+}
+
+#cerrarPedido{
+  background-color: rgb(255, 58, 58) !important;
+  color: white;
+  border: none;
+  padding: 5px;
+  width: 80%;
+}
+
+#cerrarPedido:hover{
+  background-color: rgb(209, 3, 3) !important
 }
 
 .cesta-img {
