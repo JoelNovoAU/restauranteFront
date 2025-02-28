@@ -10,7 +10,7 @@ text-decoration: underline black;
 }
 .opciones{
     display: grid;
-    margin-top: 2%;
+    margin-top: 10%;
     grid-template-columns: repeat(2,1fr);
     place-items: center;
 }
@@ -79,4 +79,39 @@ margin-top: 4%;
 }
   #divsolicitud{
     background-color:  rgb(255, 196, 0) !important;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .contenedorsolicitudes{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+          margin-left: 15%;
+      margin-top: 4%;
+      }
+      .contenedorPedidos{
+        display: grid;
+      grid-template-columns: repeat(2,1fr);
+        margin-left: 15%;
+    margin-top: 4%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .contenedorsolicitudes{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+          margin-left: 15%;
+      margin-top: 4%;
+      }
+      .opciones{
+        display: grid;
+        margin-top: 10%;
+        grid-template-columns: repeat(1,1fr);
+        place-items: center;
+    }
+    .contenedorPedidos{
+        display: grid;
+      grid-template-columns: repeat(1,1fr);
+        margin-left: 15%;
+    margin-top: 4%;
+    }
 }
