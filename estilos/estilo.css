@@ -454,6 +454,11 @@ padding-bottom: 10%;
   width: 100%;
 }
 
+#imgpagar{
+  width: 60%;
+  object-fit: cover;
+}
+
 .personal-info, .order-summary, .payment-container {
   background-color: white;
   padding: 20px;
@@ -519,14 +524,19 @@ padding-bottom: 10%;
   margin-right: 32%;
 }
 .input-box{
-  margin-top: 20px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 .payment-group {
   display: flex;
   justify-content: space-between;
 
 }
-
+#textoPagar{
+  color: black !important;
+  width: 100%;
+}
 .pay-button {
   width: 100%;
   background-color: #28a745;

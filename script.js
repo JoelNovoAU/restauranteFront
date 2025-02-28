@@ -331,10 +331,9 @@ $(document).ready(function () {
                 productosCesta.forEach(function (item) {
                     const productoHTML = `
                         <div class="order-item">
-                            <img src="${item.imagen}" alt="${item.nombre}">
+                            <img id="imgpagar" src="${item.imagen}" alt="${item.nombre}">
                             <div>
                                 <strong>${item.nombre}</strong>
-                                <p>${item.descripcion || "Descripción no disponible"}</p> <!-- Puedes agregar más información si tienes -->
                             </div>
                             <p class="price">€${(item.precio * item.cantidad).toFixed(2)}</p>
                         </div>

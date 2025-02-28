@@ -32,10 +32,11 @@
                     </div>
                 </div>
             </div>
+            
             <div class="order-summary">
                 <h3>TU PEDIDO:</h3>
                 <div id="order-items-container">
-                    <!-- Aquí se agregarán los productos dinámicamente -->
+
                 </div>
                 <hr>
                 <div class="total">
@@ -45,7 +46,7 @@
             </div>
         </div>
         <div class="payment-container">
-            <h2>Introduce los datos de tu tarjeta de pago</h2>
+            <h2 id="textoPagar">Introduce los datos de tu tarjeta de pago</h2>
             <form id="payment-form">
                 <div class="input-box">
                     <label>Titular de la tarjeta</label>
@@ -61,7 +62,7 @@
                 </div>
                 <div class="input-box">
                     <label>CVV</label>
-                    <input id="cvv" type="text" placeholder="CVV" required>
+                    <input id="cvv" type="text" placeholder="CVV" required maxlength="3">
                 </div>
                 <button type="submit" class="pay-button">Pagar ahora</button>
             </form>
