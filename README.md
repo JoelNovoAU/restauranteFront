@@ -2,22 +2,23 @@
 https://restaurante-front-pi.vercel.app/
 LOGUEARSE COMO ADMIN
 correo-> admin@admin.admin 
-contraseña ->
+contraseña -> admin
 ## BEN COMER -> RESTAURANTE APOYADO EN UNA TIENDA ONLINE
 
-Este es un proyecto de un prototipo de restaurante con funcionalidades abreviadaas de {
-                    - INICIO DE SESION.
-                    - SOLICITUD DE PEDIDOS (CLIENTE).
-                    - SOLICITUD DE RESERVAS (CLIENTE).
-                    - ADMINISTRACIÓN DE RESERVAS.
-                    - ADMINISTRACIÓN DE PRODUCTOS.
-}
+Este es un proyecto de un prototipo de restaurante con funcionalidades abreviadaas de 
+- INICIO DE SESION.
+- SOLICITUD DE PEDIDOS (CLIENTE).
+- SOLICITUD DE RESERVAS (CLIENTE).
+- ADMINISTRACIÓN DE RESERVAS.
+- ADMINISTRACIÓN DE PRODUCTOS.
+
 
 ## Capturas de Pantalla
 Ejemplo de codigo front apoyado en JS url:
 https://github.com/user-attachments/assets/02bc1261-c2f7-4035-9a39-cd0f16e21f28
 Ejemplo de codigo back. Api desarrollada en JS recibiendo el código de el front url:
 ![code](https://github.com/user-attachments/assets/999ef0f3-c9d8-44c3-8699-fce1a16bf49a)
+![code](https://github.com/user-attachments/assets/1cc96d9e-bc24-4f81-bbef-2d3c5c2ba74a)
 
 ## Características
 - Registro e inicio de sesión de usuarios - Con "DASHBOARD" funcional donde puede gestionar los pedidos y reservas que se solicitan
